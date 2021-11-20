@@ -34,14 +34,21 @@ def seach_books(str):
 
 def print_hit_list(rows):
 		
-	if not rows:				# リストが空のとき
-		print("そんな本はありません")
-	else:
-		for row in rows:		# 検索結果を1つずつ処理
-			print("<p>ID = %s</p>" % str(row['ID']))
-			print("<br>タイトル = %s</br>" % str(row['TITLE']))
-			print("<br>著者 = %s</br>" % str(row['author']))
-			print("<br>出版社 = %s</br>" % str(row['PUBLISHER']))
-			print("<br>価格 = %s</br>" % str(row['PRICE']))
-			print("<br>ISBN = %s</br>" % str(row['ISBN']))
-			print("<br>-------</p>")
+    if not rows:				# リストが空のとき
+        print("そんな本はありません")
+    else:
+        for row in rows:
+                info = ['ID','author','PUBLISHER','PRICE','ISBN']
+                print("<p><table border= 1 >")
+                print("<tr>")
+                print("<th>TITLE</th>")
+                print("<th>{}</th>".format(row['TITLE']))
+                print("</tr>")
+                
+                for str in info:
+                        print("<tr>")
+                        print("<td>{}</td>".format(str))
+                        print("<td>{}</td>".format(row[str]))
+                        print("</tr>")
+                print("</table></p>")
+			
