@@ -15,12 +15,12 @@ def seach_books(str):
 
         try:
                 # SQL文の実行
-                title = str
-                cur.execute("select * from BOOKLIST where TITLE like ? ", ('%' + title + '%',))
+                input = str
+                cur.execute("select * from BOOKLIST where TITLE like ? OR AUTHOR like ?", ('%' + input + '%','%' + input + '%'))
                 rows =  cur.fetchall()		# 検索結果をリストとして取得
 
         except sqlite3.Error as e:
-                print(os.getcwd())# エラー処理
+                # エラー処理
                 print("Error occurred:", e.args[0])
                 rows = []
 
