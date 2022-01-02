@@ -23,8 +23,7 @@ print(" <body>")
 book_info = search.seach_books(param_str)
 #スクレイピングを実施。該当書籍のurlリストを返す
 url_list = search_for_url.search_for_url_list(book_info)
-print(url_list)
 #書籍情報を表示する
-print_data.print_hit_list(book_info)
+print_data.print_hit_list(book_info,url_list)
 print(" </body>")
 print("</html>")
