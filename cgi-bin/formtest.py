@@ -4,6 +4,8 @@ import sys
 import io
 import cgi
 import search
+import print_data
+import search_for_url
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
@@ -19,6 +21,10 @@ print(" <head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf
 print(" <body>")
 #データベースから文字列を検索して、一致する書籍情報を取得
 book_info = search.seach_books(param_str)
-search.print_hit_list(book_info)
+#スクレイピングを実施。該当書籍のurlリストを返す
+url_list = search_for_url.search_for_url_list(book_info)
+print(url_list)
+#書籍情報を表示する
+print_data.print_hit_list(book_info)
 print(" </body>")
 print("</html>")
